@@ -1,6 +1,6 @@
 ﻿var express = require("express");
 const WS_MODULE = require("ws");
-const http = require("https");
+const http = require("http");
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
