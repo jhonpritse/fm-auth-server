@@ -13,10 +13,10 @@ app.get("/hello", (req, res) => {
     res.send("hello world");
 });
 
-ComfyWeb.Run( 443, {
-    domain: "auth.thepocketportal.com",
-    email: "pfpmanila@gmail.com"
-} );
+// ComfyWeb.Run( 443, {
+//     domain: "auth.thepocketportal.com",
+//     email: "pfpmanila@gmail.com"
+// } );
 
 const server = http.createServer({
     key: fs.readFileSync('auth.thepocketportal.com_production_privkey.pem'),
