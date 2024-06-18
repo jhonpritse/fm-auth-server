@@ -19,8 +19,8 @@ ComfyWeb.Run( 443, {
 } );
 
 const server = http.createServer({
-   // key: fs.readFileSync('fm.thepocketportal.com_production_privkey.pem'),
-  //  cert: fs.readFileSync('fm.thepocketportal.com_production_cert.pem')
+    key: fs.readFileSync('auth.thepocketportal.com_production_privkey.pem'),
+    cert: fs.readFileSync('auth.thepocketportal.com_production_cert.pem')
 },app);
 
 ws = new WS_MODULE.Server({server});
