@@ -3,7 +3,6 @@ const WS_MODULE = require("ws");
 var fs = require('fs');
 
 var ComfyWeb = require( "webwebwebs" );
-//const http = require("http");
 const http = require("https");
 
 const app = express();
@@ -13,10 +12,10 @@ app.get("/hello", (req, res) => {
     res.send("hello world");
 });
 
-// ComfyWeb.Run( 443, {
-//     domain: "auth.thepocketportal.com",
-//     email: "pfpmanila@gmail.com"
-// } );
+ComfyWeb.Run( 4001, {
+    domain: "auth.thepocketportal.com",
+    email: "pfpmanila@gmail.com"
+} );
 
 const server = http.createServer({
     key: fs.readFileSync('auth.thepocketportal.com_production_privkey.pem'),
