@@ -21,7 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '/nextPage';
+                window.location.href = '/info-admin.html';
             } else {
                 attempts++;
                 alert('Invalid credentials. Please try again.');
