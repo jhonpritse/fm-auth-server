@@ -16,3 +16,19 @@ if ($conn->connect_error) {
     echo "Connected successfully to the database.";
 }
 ?>
+
+
+<html>
+<head>
+    <title>PHP MySQL Connection</title>
+</head>
+<body>
+    <h1>PHP MySQL Connection</h1>
+    <?php
+    // Include the db-connect.php file
+    include 'db-connect.php';
+    ?>
+</body>
+</html>
+
+
