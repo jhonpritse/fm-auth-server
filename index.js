@@ -10,9 +10,6 @@ const http = require("https");
 const app = express();
 app.use(express.static(__dirname + '/public'));
 
-app.get("/hello", (req, res) => {
-    res.send("hello world");
-});
 
 // ComfyWeb.Run( 4001, {
 //     domain: "auth.thepocketportal.com",
