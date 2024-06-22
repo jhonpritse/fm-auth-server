@@ -1,18 +1,26 @@
 {
   "name": "fm-auth-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "auth server for pocket portal codes",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonpritse/fm-auth-server.git"
+  },
+  "author": "prietse",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonpritse/fm-auth-server/issues"
+  },
+  "homepage": "https://github.com/jhonpritse/fm-auth-server#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "fs": "^0.0.1-security",
+    "fm": "^0.8.0",
+    "webwebwebs": "^1.1.1",
     "ws": "^8.17.1"
   }
 }
