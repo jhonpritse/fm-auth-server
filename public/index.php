@@ -4,6 +4,8 @@
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
+        
+        
         <?php
         // Load the environment variables
         // Note: You need to use a package like vlucas/phpdotenv to load .env variables
@@ -22,5 +24,6 @@
             echo "Connected successfully to the database.";
         }
         ?>
+    Hiii
     </body>
 </html>
