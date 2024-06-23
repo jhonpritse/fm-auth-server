@@ -1,6 +1,6 @@
 ﻿<html>
     <head>
-        <title>PHP MySQL Connection</title>
+        <title>Auth Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
@@ -24,5 +24,3 @@
         ?>
     </body>
 </html>
-
-<?php

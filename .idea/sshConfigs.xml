@@ -2,7 +2,12 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig host="35.236.133.179" id="78141475-6a34-4fe9-a692-e2fa4ccfa501" keyPath="C:\Users\jhonp\.ssh\fm-auth-server-key" port="22" nameFormat="DESCRIPTIVE" username="jhonpritse" useOpenSSHConfig="true" />
+      <sshConfig host="35.236.133.179" id="78141475-6a34-4fe9-a692-e2fa4ccfa501" keyPath="C:\Users\jhonp\.ssh\fm-auth-server-key" port="22" customName="mysql-server" nameFormat="CUSTOM" username="jhonpritse" useOpenSSHConfig="true">
+        <option name="customName" value="mysql-server" />
+      </sshConfig>
+      <sshConfig host="34.80.76.246" id="3133351a-0368-4ad3-aeeb-8b6d22858bf4" keyPath="C:\Users\jhonp\.ssh\auth-server-key" port="22" customName="auth-server" nameFormat="CUSTOM" username="jhonpritse" useOpenSSHConfig="true">
+        <option name="customName" value="auth-server" />
+      </sshConfig>
     </configs>
   </component>
 </project>
