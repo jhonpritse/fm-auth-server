@@ -2,7 +2,7 @@
 //require __DIR__ . '/vendor/autoload.php';
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 //$dotenv->load();
-$config = parse_ini_file(__DIR__.'/config.ini',true);
+$config = parse_ini_file(__DIR__ . '/config.ini',true);
 
 //?>
 
