@@ -1,12 +1,12 @@
-﻿   <?php
+﻿<?php
 require __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 ?>
 
 <html lang="">
     <head>
-        <title>Auth Server</title>
+        <title>Auth 2 Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
