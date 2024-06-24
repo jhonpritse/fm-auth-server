@@ -2,13 +2,13 @@
 //require __DIR__ . '/vendor/autoload.php';
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 //$dotenv->load();
-$config = parse_ini_file(__DIR__ . '../config.ini',true);
+$config = parse_ini_file(__DIR__ . '/config.ini', true);
 
 //?>
 
 <html lang="">
     <head>
-        <title>Auth 2 Server</title>
+        <title>Auth 33 Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
@@ -16,7 +16,8 @@ $config = parse_ini_file(__DIR__ . '../config.ini',true);
 
         <?php
         $db = $config['database']['DB_NAME'];
-        echo "Database name: $db  \r\n"
+        echo "Database name: $db  \r\n";
+        echo __DIR__ . "/config.ini";
         ?>
         mini
     </body>
