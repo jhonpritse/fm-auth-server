@@ -10,7 +10,7 @@ require __DIR__ . '/config.php';
 
 <html lang="">
     <head>
-        <title>Auth Server</title>
+        <title>Auth 2Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
