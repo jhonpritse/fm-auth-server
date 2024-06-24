@@ -8,7 +8,7 @@ $config = parse_ini_file(__DIR__ . '/config.ini', true);
 
 <html lang="">
     <head>
-        <title>Auth 33 Server</title>
+        <title>Auth 55 Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
@@ -17,6 +17,9 @@ $config = parse_ini_file(__DIR__ . '/config.ini', true);
         <?php
         $db = $config['database']['DB_NAME'];
         echo "Database name: $db  \r\n";
+        echo "++++";
+        echo $config['database']['DB_NAME'] ;
+        echo "____";
         echo __DIR__ . "/config.ini";
         ?>
         mini
