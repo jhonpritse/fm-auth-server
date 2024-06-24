@@ -15,7 +15,7 @@ require __DIR__ . '/config.php';
     <body>
         <h1>PHP MySQL Connection</h1>
 
-
+dsa
         <?php
       
         // Create connection
