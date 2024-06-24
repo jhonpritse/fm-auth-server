@@ -2,24 +2,31 @@
 //require __DIR__ . '/vendor/autoload.php';
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 //$dotenv->load();
-$config = parse_ini_file(__DIR__ . '/config.ini', true);
-require __DIR__ . '/login.php';
+//
+//$config = parse_ini_file(__DIR__ . '/config.ini', true);
+require __DIR__ . '/config.php';
 ?>
+
+
 <html lang="">
     <head>
-        <title>Auth 55 Server</title>
+        <title>Auth Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
 
 
         <?php
-        $db = DB_NAME;
-        echo "Database name: $db  \r\n";
-        echo "++++";
-        echo DB_NAME ;
-        echo "____";
-        echo __DIR__ . "/config.ini";
+      
+        // Create connection
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }else
+        echo "Connected successfully";
+        
+        
         ?>
         mini
     </body>
