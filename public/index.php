@@ -2,7 +2,9 @@
 //require __DIR__ . '/vendor/autoload.php';
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 //$dotenv->load();
-?>
+$config = parse_ini_file(__DIR__.'/config.ini',true);
+
+//?>
 
 <html lang="">
     <head>
@@ -13,7 +15,7 @@
 
 
         <?php
-        $db = $_ENV['DB_NAME'];
+        $db = $config['database']['DB_NAME'];
         echo "Database name: $db  \r\n"
         ?>
         mini
