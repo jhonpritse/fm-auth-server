@@ -3,9 +3,8 @@
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 //$dotenv->load();
 $config = parse_ini_file(__DIR__ . '/config.ini', true);
-
-//?>
-
+require __DIR__ . '/login.php';
+?>
 <html lang="">
     <head>
         <title>Auth 55 Server</title>
@@ -15,10 +14,10 @@ $config = parse_ini_file(__DIR__ . '/config.ini', true);
 
 
         <?php
-        $db = $config['database']['DB_NAME'];
+        $db = DB_NAME;
         echo "Database name: $db  \r\n";
         echo "++++";
-        echo $config['database']['DB_NAME'] ;
+        echo DB_NAME ;
         echo "____";
         echo __DIR__ . "/config.ini";
         ?>
