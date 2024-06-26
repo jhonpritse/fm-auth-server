@@ -10,7 +10,7 @@ require __DIR__ . '/config.php';
 
 <html lang="">
     <head>
-        <title>Auth 2Server</title>
+        <title>Auth Server</title>
     </head>
     <body>
         <h1>PHP MySQL Connection</h1>
@@ -20,7 +20,7 @@ dsa
       
         // Create connection
         // Check connection
-        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $conn = new mysqli('35.236.133.179', 'admin', 'Pocketportal!1');
                 
         ?>
         mini
