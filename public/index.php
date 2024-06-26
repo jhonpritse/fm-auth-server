@@ -20,8 +20,11 @@ dsa
       
         // Create connection
         // Check connection
-        $conn = new mysqli('35.236.133.179', 'admin', 'Pocketportal!1');
-                
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully";
         ?>
         mini
     </body>
