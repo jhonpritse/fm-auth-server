@@ -11,7 +11,7 @@ $conn = CONN;
 <body>
 <h1>Register Page</h1>
 s
-<form method="post" action="/login/">
+<form method="post" action="">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username" required><br>
     <label for="password">Password:</label><br>
