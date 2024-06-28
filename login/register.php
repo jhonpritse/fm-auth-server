@@ -10,8 +10,8 @@ $conn = CONN;
 </head>
 <body>
 <h1>Register Page</h1>
-
-<form method="post" action="">
+s
+<form method="post" action="/login/">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username" required><br>
     <label for="password">Password:</label><br>
