@@ -1,5 +1,6 @@
 ﻿<?php
-// You can add your registration logic here
+require __DIR__ . '/../conn.php';
+$conn = CONN;
 ?>
 
 <html lang="">
@@ -20,3 +21,37 @@
 </form>
 </body>
 </html>
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+
+    if ($password != $confirm_password) {
+        echo "Passwords do not match";
+    } else {
+        // Add your code here to handle the registration when the passwords match
+
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Prepare an SQL statement
+        $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.user (user, password) VALUES (?, ?)");
+
+        // Bind the parameters
+        $stmt->bind_param("ss", $username, $hashed_password);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "Registration successful";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
+}
+?>

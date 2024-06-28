@@ -1,12 +1,7 @@
 ﻿<?php
-require __DIR__ . '/../config.php';
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
+require __DIR__ . '/../conn.php';
+$conn = CONN;
 ?>
-
 
 <html lang="">
 <head>
@@ -31,13 +26,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $query = "SELECT * FROM `pocketportal-db`.user WHERE user='$username' AND password='$password'";
+    $query = "SELECT * FROM `pocketportal-db`.user WHERE user='$username'";
     $result = mysqli_query($conn, $query);
-
     if (mysqli_num_rows($result) > 0) {
-        echo "Login successful";
+        $user = mysqli_fetch_assoc($result);
+        if (password_verify($password, $user['password'])) {
+            echo "Login successful";
+            header("Location: /dash");
+            exit;
+        } else {
+            echo "Invalid credentials";
+        }
     } else {
-        echo "Invalid credentials";
+        echo "Invalid username";
     }
 }
 ?>
