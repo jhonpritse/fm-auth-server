@@ -19,6 +19,9 @@ $conn = CONN;
     <label for="confirm_password">Confirm Password:</label><br>
     <input type="password" id="confirm_password" name="confirm_password" required><br>
     <input type="submit" value="Register">
+    <form action="/login/" method="get">
+        <button type="submit">Go Back</button>
+    </form>
 </form>
 </body>
 </html>
