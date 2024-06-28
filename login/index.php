@@ -21,9 +21,11 @@ echo "Connected successfully";
     <input type="text" id="username" name="username"><br>
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password"><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Login">
 </form>
-
+<form action="register.php" method="get">
+    <button type="submit">Register</button>
+</form>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -39,19 +41,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
-<?php
-$result = mysqli_query($conn,
-    "SELECT * FROM `pocketportal-db`.user");
-$data = $result->fetch_all(MYSQLI_ASSOC);
-?>
-<?php foreach($data as $row): ?>
-    <tr>
-        <td><?= htmlspecialchars($row['user']) ?></td>
-        <td><?= htmlspecialchars($row['password']) ?></td>
-    </tr>
-<?php endforeach ?>
---end--
 </body>
 </html>
