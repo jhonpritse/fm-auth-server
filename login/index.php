@@ -1,5 +1,5 @@
 ﻿<?php
-require __DIR__ . '/../conn.php';
+require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 ?>
 

@@ -1,6 +1,6 @@
 ﻿<?php
-require __DIR__ . '/../conn.php';
-$conn = CONN; 
+require __DIR__ . '/../config/conn.php';
+$conn = CONN;
 ?>
 
 <html lang="">
