@@ -39,7 +39,7 @@ $conn = CONN;
         <input type="text" id="note" name="note"><br>
     
         <button type="submit" name="add">Add</button>
-        <button name="back">Back</button>
+        <button name="back" formnovalidate>Back</button>
     </form>
     
     end++++++++++++++++++++++++++++++++
