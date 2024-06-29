@@ -11,7 +11,7 @@ $conn = CONN;
 <body>
 <h1>Add Item</h1>
 
-<form method="post" action="">
+<form method="POST" action="">
     <label for="item_id">Item ID:</label><br>
     <input type="text" id="item_id" name="item_id" required><br>
     
@@ -45,8 +45,33 @@ $conn = CONN;
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-// Prepare an SQL statement
+    $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
+    $code = mysqli_real_escape_string($conn, $_POST['code']);
+    $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
+    $item_name = mysqli_real_escape_string($conn, $_POST['item_name']);
+    
+    // Optional fields
+    if (empty($_POST['is_verified'])) {
+        $is_verified = null;
+    } else {
+        $is_verified = mysqli_real_escape_string($conn, $_POST['is_verified']);
+    }
+    if (empty($_POST['used_amount'])) {
+        $used_amount = null;
+    } else {
+        $used_amount = mysqli_real_escape_string($conn, $_POST['used_amount']);
+    }
+    if (empty($_POST['c_name'])) {
+        $c_name = null;
+    } else {
+        $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
+    }
+    if (empty($_POST['note'])) {
+        $note = null;
+    } else {
+        $note = mysqli_real_escape_string($conn, $_POST['note']);
+    }
+    // Prepare an SQL statement
     $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes 
  (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -63,8 +88,11 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 // Close the statement
     $stmt->close();
-
 }
+
+
+
+
 
 
 
