@@ -16,8 +16,7 @@ if (mysqli_num_rows($result_login) > 0) {
 } else {
     echo "Invalid username";
     header("Location: /login");
-} 
-exit;
+}
 ?>
 
 
