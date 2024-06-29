@@ -1,5 +1,4 @@
 ﻿<?php
-session_start();
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 ?>
@@ -38,26 +37,42 @@ $conn = CONN;
 
     <label for="note">Note:</label><br>
     <input type="text" id="note" name="note"><br>
-
-    <input type="submit" value="Add Item">
+    
+    <input type="submit" value="Add">
 </form>
-end++++++++++++++++++++++++++++++++
-
 end++++++++++++++++++++++++++++++++
 </body>
 </html>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
     $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
     $item_name = mysqli_real_escape_string($conn, $_POST['item_name']);
-    $is_verified = mysqli_real_escape_string($conn, $_POST['is_verified']);
+    if (empty($_POST['is_verified'])) {
+        $is_verified = 0;
+    }else{
+        $is_verified = mysqli_real_escape_string($conn, $_POST['is_verified']);
+    }
+    if (empty($_POST['used_amount'])) {
+        $used_amount = 0;
+    }else{
+        
     $used_amount = mysqli_real_escape_string($conn, $_POST['used_amount']);
-    $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
-    $note = mysqli_real_escape_string($conn, $_POST['note']);
-
+    }
+    if (empty($_POST['c_name'])) {
+        $c_name = "";
+    }else {
+        $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
+    }
+    if (empty($_POST['note'])) {
+        $note = "";
+    }else{
+        $note = mysqli_real_escape_string($conn, $_POST['note']);
+    }
+    
     // Prepare an SQL statement
     $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes (item_id, item_name, code, stream_url, is_verified, used_amount, c_name, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
