@@ -32,7 +32,39 @@ if (mysqli_num_rows($result_login) > 0) {
 
 <form action="/login" method="post">
     <button type="submit">Logout</button>
-    
+    <?php
+
+    // Execute a SQL query to fetch the data
+    $query = "SELECT code, stream_url FROM `pocketportal-db`.codes";
+    $result = mysqli_query($conn, $query);
+
+
+    // Check if the query was successful
+    if ($result) {
+        // Start the HTML table
+        echo "<table>";
+        echo "<tr><th>Code ID</th><th>Stream URL</th></tr>"; // Replace with your actual column names
+
+        // Fetch each row of data
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Create a new row for each record
+            echo "<tr>";
+
+            // Create a new cell for each field in the record
+            foreach ($row as $field) {
+                echo "<td>" . htmlspecialchars($field) . "</td>";
+            }
+
+            echo "</tr>";
+        }
+
+        // End the HTML table
+        echo "</table>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+ 
+    ?>
     end===========
 </body>
 </html>
