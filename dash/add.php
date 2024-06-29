@@ -45,9 +45,9 @@ require  __DIR__ . '/../config/generate_code.php';
         <button name="back" formnovalidate>Back</button>
     </form>
 ----QR code generator-------------------
-    <div id="qrcode"></div>
-______________________________________
-    end++++++++++++++++++++++++++++++++
+    <div id="qrcode">d</div>
+______________________________________ 
+    end++++++++++++++++++++++++++++++++ <br>
 </body>
 </html>
 
@@ -104,9 +104,9 @@ if ( $_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['add']) && isset($_POS
             $item_id, $item_name, $code, $stream_url, $is_verified, $used_amount, $c_name, $note);
         // Execute the statement
         if ($stmt->execute()) {
-            echo "Item added successfully";
+            echo "Item added successfully<br>";
             echo "<script>generateQRCode('auth.thepocketportal.com/v/'.$code)</script>";
-            echo "<button id='download'>Download QR Code</button>";
+            echo "<button id='download'>Download QR Code</button> <br>";
             echo 'auth.thepocketportal.com/v/'.$code;
         } else {
             echo "Error: " . $stmt->error;
@@ -124,12 +124,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
 
 <script >
     function generateQRCode(url) {
-        QRCode(document.getElementById("qrcode"), 
-        {
-            text: url
+        let qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: url,
             width: 128,
             height: 128
         });
+        print(qrcode);
     }
     document.getElementById('download').addEventListener('click', function() {
         let img = document.getElementById('qrcode').getElementsByTagName('img')[0];
