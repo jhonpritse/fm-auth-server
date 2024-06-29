@@ -73,7 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add']) && isset($_POST
     }else{
         $note = mysqli_real_escape_string($conn, $_POST['note']);
     }
-    
+    $used_amount = (int)$used_amount;
+    $is_verified = (int)$is_verified;
     // Prepare an SQL statement
     $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes 
     (item_id, item_name, code, stream_url, is_verified, used_amount, c_name, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");

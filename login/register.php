@@ -22,7 +22,7 @@ $conn = CONN;
     <input type="password" id="confirm_password" name="confirm_password" required><br>
     
     <button type="submit" name="register">Register</button>
-    <button type="submit" name="back">Back</button>
+    <button name="back" formnovalidate>Back</button>
 </form>
 
 </body>
