@@ -1,17 +1,15 @@
-﻿<?php
+﻿<?php /** @noinspection PhpUnreachableStatementInspection */
 session_start();
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 
 $username = $_SESSION['user'];
 $password = $_SESSION['password'];
-$query = "SELECT * FROM `pocketportal-db`.user WHERE user='$username'";
-$result = mysqli_query($conn, $query);
-if (mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
-    if (password_verify($password, $user['password'])) {
-        echo "Login successful";
-    } else {
+$query_login = "SELECT * FROM `pocketportal-db`.user WHERE user='$username'";
+$result_login = mysqli_query($conn, $query_login);
+if (mysqli_num_rows($result_login) > 0) {
+    $user = mysqli_fetch_assoc($result_login);
+    if (!password_verify($password, $user['password'])) {
         echo "Invalid credentials";
         header("Location: /login");
     }
