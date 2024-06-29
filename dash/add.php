@@ -2,7 +2,8 @@
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 
-//unset($_SERVER['REQUEST_METHOD'])
+include 'config/generate_code.php';
+$randomCode = generateRandomCode();
 ?>
 
 <html lang="">
@@ -17,7 +18,7 @@ $conn = CONN;
         <input type="text" id="item_id" name="item_id" required><br>
     
         <label for="code">Code:</label><br>
-        <input type="text" id="code" name="code" required><br>
+        <input type="text" id="code" name="code" value="<?php $randomCode?>" required><br>
     
         <label for="stream_url">Stream URL:</label><br>
         <input type="text" id="stream_url" name="stream_url" required><br>
@@ -52,6 +53,8 @@ $conn = CONN;
 <?php
 if ( $_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['add']) && isset($_POST['item_id']) && isset($_POST['code']) && isset($_POST['stream_url']) && isset($_POST['item_name'])) 
 {
+    
+    
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
     $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
@@ -79,23 +82,35 @@ if ( $_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['add']) && isset($_POS
     
     $used_amount = (int)$used_amount;
     $is_verified = (int)$is_verified;
+
+    // Check if item_id or code already exists
+    $check_query = "SELECT * FROM `pocketportal-db`.codes WHERE item_id = '$item_id' OR code = '$code'";
+    $check_result = mysqli_query($conn, $check_query);
     
-    // Prepare an SQL statement
-    $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes 
-    (item_id, item_name, code, stream_url, is_verified, used_amount, c_name, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
-    // Bind the parameters
-    $stmt->bind_param("ssssssss", 
-        $item_id, $item_name, $code, $stream_url, $is_verified, $used_amount, $c_name, $note);
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "Item added successfully";
-    } else {
-        echo "Error: " . $stmt->error;
+    if (mysqli_num_rows($check_result) > 0) {
+        echo "Item ID or Code already exists";
+        exit;
     }
+    else
+    {
+        // Prepare an SQL statement
+        $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes 
+            (item_id, item_name, code, stream_url, is_verified, used_amount, c_name, note)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-    // Close the statement
-    $stmt->close();
+        // Bind the parameters
+        $stmt->bind_param("ssssssss",
+            $item_id, $item_name, $code, $stream_url, $is_verified, $used_amount, $c_name, $note);
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "Item added successfully";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the statement
+        $stmt->close();   
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
     header("Location: /dash");
