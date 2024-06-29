@@ -124,7 +124,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
 
 <script >
     function generateQRCode(url) {
-        let qrcode = new QRCode(document.getElementById("qrcode"), {
+        QRCode(document.getElementById("qrcode"), 
+        {
             text: url
             width: 128,
             height: 128
