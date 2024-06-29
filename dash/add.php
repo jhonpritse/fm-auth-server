@@ -52,23 +52,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
     $item_name = mysqli_real_escape_string($conn, $_POST['item_name']);
     if (empty($_POST['is_verified'])) {
-        $is_verified = 0;
+        $is_verified = null;
     }else{
         $is_verified = mysqli_real_escape_string($conn, $_POST['is_verified']);
     }
     if (empty($_POST['used_amount'])) {
-        $used_amount = 0;
+        $used_amount = null;
     }else{
         
     $used_amount = mysqli_real_escape_string($conn, $_POST['used_amount']);
     }
     if (empty($_POST['c_name'])) {
-        $c_name = "";
+        $c_name = null;
     }else {
         $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
     }
     if (empty($_POST['note'])) {
-        $note = "";
+        $note = null;
     }else{
         $note = mysqli_real_escape_string($conn, $_POST['note']);
     }
@@ -88,5 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close the statement
     $stmt->close();
+    
+    echo "end______________________";
 }
 ?>
