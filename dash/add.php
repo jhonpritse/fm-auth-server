@@ -41,55 +41,26 @@ $conn = CONN;
 
     <input type="submit" value="Add Item">
 </form>
-
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
     $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
     $item_name = mysqli_real_escape_string($conn, $_POST['item_name']);
+    $is_verified = mysqli_real_escape_string($conn, $_POST['is_verified']);
+    $used_amount = mysqli_real_escape_string($conn, $_POST['used_amount']);
+    $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
+    $note = mysqli_real_escape_string($conn, $_POST['note']);
 
-    // Optional fields
-    if (empty($_POST['is_verified'])) {
-        $is_verified = null;
+    $query = "INSERT INTO `pocketportal-db`.codes (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note) VALUES ('$item_id', '$code', '$stream_url', '$item_name', '$is_verified', '$used_amount', '$c_name', '$note')";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        echo "Item added successfully";
     } else {
-        $is_verified = mysqli_real_escape_string($conn, $_POST['is_verified']);
+        echo "Error: " . mysqli_error($conn);
     }
-    if (empty($_POST['used_amount'])) {
-        $used_amount = null;
-    } else {
-        $used_amount = mysqli_real_escape_string($conn, $_POST['used_amount']);
-    }
-    if (empty($_POST['c_name'])) {
-        $c_name = null;
-    } else {
-        $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
-    }
-    if (empty($_POST['note'])) {
-        $note = null;
-    } else {
-        $note = mysqli_real_escape_string($conn, $_POST['note']);
-    }
-    // Prepare an SQL statement
-    $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes 
- (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
-// Bind the parameters
-    $stmt->bind_param("ssssiiss", $item_id, $code, $stream_url, $item_name, $is_verified, $used_amount, $c_name, $note);
-
-// Execute the statement
-    if ($stmt->execute()) {
-        echo "Item Add successful";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-// Close the statement
-    $stmt->close();
 }
 
 ?>
-
 </body>
 </html>
