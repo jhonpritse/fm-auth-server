@@ -107,7 +107,7 @@ if ( $_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['add']) && isset($_POS
             echo "Item added successfully<br>";
             $qr_text = 'auth.thepocketportal.com/v/'.$code;
             echo "
-                <script src='/config/generate_code.php'>
+                <script src='/config/generate_QR.js'>
                     // Call the generateQRCode function when the form is submitted
                     document.getElementById('add').addEventListener('click', function() {
                         generateQRCode('$qr_text');
