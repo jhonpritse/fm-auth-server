@@ -15,37 +15,49 @@ $conn = CONN;
 <form method="post" action="">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>
+    
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password"><br>
-    <input type="submit" value="Login">
+    
+    <button type="submit" name="login">Login</button>
+    <button type="submit" name="register">Register</button>
 </form>
-<form action="register.php" method="get">
-    <button type="submit">Register</button>
-</form>
+
 
 </body>
 </html>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password'])) 
+{
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     $query = "SELECT * FROM `pocketportal-db`.user WHERE user='$username'";
     $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0) 
+    {
         $user = mysqli_fetch_assoc($result);
-        if (password_verify($password, $user['password'])) {
-            echo "Login successful";
+        if (password_verify($password, $user['password'])) 
+        {
             $_SESSION['user'] = $user['user'];
             $_SESSION['password'] = $password;
             header("Location: /dash");
             exit;
-        } else {
+        }
+        else 
+        {
             echo "Invalid credentials";
         }
-    } else {
+    } 
+    else
+    {
         echo "Invalid username";
     }
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) 
+{
+    header("Location: /login/register.php");
+    exit;
 }
 ?>

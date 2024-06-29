@@ -1,5 +1,6 @@
-﻿<?php /** @noinspection HtmlDeprecatedAttribute */
-/** @noinspection PhpUnreachableStatementInspection */
+﻿/** @noinspection HtmlDeprecatedAttribute */
+//verify login
+<?php 
 session_start();
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
@@ -19,39 +20,36 @@ if (mysqli_num_rows($result_login) > 0) {
     header("Location: /login");
 }
 ?>
-
-
-
+<!DOCTYPE html>
 <html lang="">
 <head>
     <title>Dashboard</title>
 </head>
 <body>
+    <h1>Dashboard</h1>
+    <p>Welcome to the dashboard, <?= $_SESSION['user'] ?></p>
 
-<h1>Dashboard</h1>
-<p>Welcome to the dashboard, <?= $_SESSION['user'] ?></p>
-
-<form method="post" action="">
-    <button type="submit" name="logout">Logout</button>
-</form>
-<form method="post" action="">
-    <button type="submit" name="add">add</button>
-</form>
-
-
+    <form method="post" action="">
+        <button type="submit" name="logout">Logout</button>
+        <button type="submit" name="add">add</button>
+    </form>
+    
     end===========
 </body>
 </html>
 
+//show data in table
 <?php
 // Execute a SQL query to fetch the data
 $query = "SELECT item_id, item_name, code, stream_url, is_verified, used_amount, c_name,note FROM `pocketportal-db`.codes";
 $result = mysqli_query($conn, $query);
 
 // Check if the query was successful
-if ($result) {
+if ($result)
+{
     // Start the HTML table
-    echo "<table border='2'>";
+    echo "<!--suppress HtmlDeprecatedAttribute -->
+<table border='2'>";
     echo "<tr><th>Item ID</th><th>Item Name</th><th>Code</th><th>Stream URL</th><th>Is Verified</th><th>Used Amount</th><th>Customer Name</th><th>Note</th></tr>";
 
     // Fetch each row of data
@@ -66,10 +64,11 @@ if ($result) {
     }
     // End the HTML table
     echo "</table>";
-} else {
+} 
+else 
+{
     echo "Error: " . mysqli_error($conn);
 }
-
 ?>
 
 
@@ -82,3 +81,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {
     session_destroy();
     header("Location: /dash");
 }
+?>
