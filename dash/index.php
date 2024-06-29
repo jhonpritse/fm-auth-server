@@ -1,4 +1,4 @@
-﻿//verify login
+﻿<!--//verify login-->
 <?php 
 session_start();
 require __DIR__ . '/../config/conn.php';
