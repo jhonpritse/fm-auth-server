@@ -45,7 +45,9 @@ $randomCode = generateRandomCode();
         <button type="submit" name="add">Add</button>
         <button name="back" formnovalidate>Back</button>
     </form>
-    
+----QR code generator-------------------
+    <div id="qrcode"></div>
+______________________________________
     end++++++++++++++++++++++++++++++++
 </body>
 </html>
@@ -104,6 +106,9 @@ if ( $_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['add']) && isset($_POS
         // Execute the statement
         if ($stmt->execute()) {
             echo "Item added successfully";
+            echo "<script>generateQRCode('auth.thepocketportal.com/v/'.$code)</script>";
+            echo "<button id='download'>Download QR Code</button>";
+            echo 'auth.thepocketportal.com/v/'.$code;
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -117,3 +122,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
     exit;
 }
 ?>
+
+<script >
+    function generateQRCode(url) {
+        let qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: url
+            width: 128,
+            height: 128
+        });
+    }
+    document.getElementById('download').addEventListener('click', function() {
+        var img = document.getElementById('qrcode').getElementsByTagName('img')[0];
+        var a = document.createElement('a');
+        a.href = img.src;
+        a.download = 'qrcode.png';
+        a.click();
+    });
+</script>
+
