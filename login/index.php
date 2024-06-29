@@ -22,6 +22,10 @@ $conn = CONN;
 <form action="register.php" method="get">
     <button type="submit">Register</button>
 </form>
+
+</body>
+</html>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -45,5 +49,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-</body>
-</html>

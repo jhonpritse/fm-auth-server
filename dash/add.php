@@ -10,7 +10,7 @@ $conn = CONN;
 </head>
 <body>
 <h1>Add Item</h1>
-<form method="post" action="">
+<form method="get" action="">
     <label for="item_id">Item ID:</label><br>
     <input type="text" id="item_id" name="item_id" required><br>
 
@@ -41,8 +41,14 @@ $conn = CONN;
 
     <input type="submit" value="Add Item">
 </form>
+end++++++++++++++++++++++++++++++++
+
+end++++++++++++++++++++++++++++++++
+</body>
+</html>
+
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "get") {
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
     $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
@@ -68,8 +74,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close the statement
     $stmt->close();
 }
-
 ?>
-end++++
-</body>
-</html>
