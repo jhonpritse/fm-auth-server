@@ -31,14 +31,14 @@ if (mysqli_num_rows($result_login) > 0) {
 <h1>Dashboard</h1>
 <p>Welcome to the dashboard, <?= $_SESSION['user'] ?></p>
 
-<form action="/login" method="post">
-    <?php session_destroy(); ?>
-    <button type="submit">Logout</button>
+<form method="post" action="">
+    <button type="submit" name="logout">Logout</button>
 </form>
-<form action="/dash/add.php">
-    <button type="submit">Add</button>
+<form method="post" action="">
+    <button type="submit" name="add">add</button>
 </form>
- 
+
+
     end===========
 </body>
 </html>
@@ -71,3 +71,14 @@ if ($result) {
 }
 
 ?>
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add'])) {
+    // Your PHP code here
+    header("Location: /dash/add");
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: /dash");
+}

@@ -45,8 +45,7 @@ end++++++++++++++++++++++++++++++++
 </html>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['item_id']) && isset($_POST['code']) && isset($_POST['stream_url']) && isset($_POST['item_name'])) {
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
     $stream_url = mysqli_real_escape_string($conn, $_POST['stream_url']);
