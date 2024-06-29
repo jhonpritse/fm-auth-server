@@ -1,5 +1,4 @@
-﻿/** @noinspection HtmlDeprecatedAttribute */
-//verify login
+﻿//verify login
 <?php 
 session_start();
 require __DIR__ . '/../config/conn.php';
@@ -38,7 +37,7 @@ if (mysqli_num_rows($result_login) > 0) {
 </body>
 </html>
 
-//show data in table
+<!--show data in table-->
 <?php
 // Execute a SQL query to fetch the data
 $query = "SELECT item_id, item_name, code, stream_url, is_verified, used_amount, c_name,note FROM `pocketportal-db`.codes";
@@ -75,7 +74,7 @@ else
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add'])) {
     // Your PHP code here
-    header("Location: /dash/add");
+    header("Location: /dash/add.php");
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {
     session_destroy();
