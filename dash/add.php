@@ -2,7 +2,7 @@
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 
-unset($_SERVER['REQUEST_METHOD'])
+//unset($_SERVER['REQUEST_METHOD'])
 ?>
 
 <html lang="">
