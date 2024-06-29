@@ -46,7 +46,7 @@ if (mysqli_num_rows($result_login) > 0) {
     if ($result) {
         // Start the HTML table
         echo "<table border='2'>";
-        echo "<tr><th>Item ID</th><th>Item Name</th><th>Code</th><th>Stream URL</th><th>Is Verified</th><th>Used Amount</th><th>Customer Amount</th><th>Note</th></tr>";
+        echo "<tr><th>Item ID</th><th>Item Name</th><th>Code</th><th>Stream URL</th><th>Is Verified</th><th>Used Amount</th><th>Customer Name</th><th>Note</th></tr>";
 
         // Fetch each row of data
         while ($row = mysqli_fetch_assoc($result)) {
