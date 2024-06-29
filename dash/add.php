@@ -3,7 +3,6 @@ require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 
 require  __DIR__ . '/../config/generate_code.php';
-$randomCode = generateRandomCode();
 ?>
 
 <html lang="">
@@ -18,7 +17,7 @@ $randomCode = generateRandomCode();
         <input type="text" id="item_id" name="item_id" required><br>
     
         <label for="code">Code:</label><br>
-        <input type="text" id="code" name="code" value="<?php echo $randomCode?>" required><br>
+        <input type="text" id="code" name="code" value="<?php echo generateRandomCode()?>" required><br>
     
         <label for="stream_url">Stream URL:</label><br>
         <input type="text" id="stream_url" name="stream_url" required><br>
