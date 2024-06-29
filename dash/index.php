@@ -32,13 +32,7 @@ if (mysqli_num_rows($result_login) > 0) {
 
 <form action="/login" method="post">
     <button type="submit">Logout</button>
-
-    <?php
-    // Execute a SQL query to fetch the data
-    $query = "SELECT * FROM `pocketportal-db`.codes";
-    $result = mysqli_query($conn, $query);
-    echo $result;
- ?>
+    
     end===========
 </body>
 </html>
