@@ -1,15 +1,18 @@
 ﻿<?php
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
+
+unset($_SERVER['REQUEST_METHOD'])
 ?>
 
 <html lang="">
 <head>
+    
     <title>Add Item</title>
 </head>
 <body>
     <h1>Add Item</h1>
-    <form>
+    <form method="post" action="" >
         <label for="item_id">Item ID:</label><br>
         <input type="text" id="item_id" name="item_id" required><br>
     
@@ -47,7 +50,7 @@ $conn = CONN;
 </html>
 
 <?php
-if (isset($_POST['add']) && isset($_POST['item_id']) && isset($_POST['code']) && isset($_POST['stream_url']) && isset($_POST['item_name'])) 
+if ( $_SERVER["REQUEST_METHOD"] && isset($_POST['add']) && isset($_POST['item_id']) && isset($_POST['code']) && isset($_POST['stream_url']) && isset($_POST['item_name'])) 
 {
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
