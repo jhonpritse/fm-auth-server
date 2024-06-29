@@ -7,7 +7,7 @@ require  __DIR__ . '/../config/generate_code.php';
 
 <html lang="">
 <head>
-    
+    <script src="/config/generate_QR.js"></script>
     <title>Add Item</title>
 </head>
 <body>
@@ -41,7 +41,7 @@ require  __DIR__ . '/../config/generate_code.php';
         <label for="note">Note:</label><br>
         <input type="text" id="note" name="note"><br>
     
-        <button type="submit" name="add">Add</button>
+        <button type="submit" id="add" name="add">Add</button>
         <button name="back" formnovalidate>Back</button>
     </form>
 ----QR code generator-------------------
@@ -105,9 +105,16 @@ if ( $_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['add']) && isset($_POS
         // Execute the statement
         if ($stmt->execute()) {
             echo "Item added successfully<br>";
-            echo "<script>generateQRCode('auth.thepocketportal.com/v/'.$code)</script>";
+            $qr_text = 'auth.thepocketportal.com/v/'.$code;
+            echo "
+                <script src='/config/generate_code.php'>
+                    // Call the generateQRCode function when the form is submitted
+                    document.getElementById('add').addEventListener('click', function() {
+                        generateQRCode('$qr_text');
+                    });
+                </script>
+            ";
             echo "<button id='download'>Download QR Code</button> <br>";
-            echo 'auth.thepocketportal.com/v/'.$code;
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -122,22 +129,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
 }
 ?>
 
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js" >
-    function generateQRCode(url) {
-        let qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: url,
-            width: 128,
-            height: 128
-        });
-        print(qrcode);
-    }
-    document.getElementById('download').addEventListener('click', function() {
-        let img = document.getElementById('qrcode').getElementsByTagName('img')[0];
-        let a = document.createElement('a');
-        a.href = img.src;
-        a.download = 'qrcode.png';
-        a.click();
-    });
-</script>
 
 
