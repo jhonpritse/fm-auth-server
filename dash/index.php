@@ -38,32 +38,8 @@ exit;
     // Execute a SQL query to fetch the data
     $query = "SELECT * FROM `pocketportal-db`.codes";
     $result = mysqli_query($conn, $query);
-
-    // Check if the query was successful
-    if ($result) {
-        // Start the HTML table
-        echo "<table>";
-        echo "<tr><th>item id</th><th>code</th><th>stream url</th><th>item name</th><th>customer name</th><th>verification status</th><th>used amount</th><th>note</th><th>note 1</th><th>note 2</th><th>note 3</th><th>note 4</th><th>note 5</th></tr>";
-
-        // Fetch each row of data
-        while ($row = mysqli_fetch_assoc($result)) {
-            // Create a new row for each record
-            echo "<tr>";
-
-            // Create a new cell for each field in the record
-            foreach ($row as $field) {
-                echo "<td>" . htmlspecialchars($field) . "</td>";
-            }
-
-            echo "</tr>";
-        }
-
-        // End the HTML table
-        echo "</table>";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
-    ?>
+    echo $result;
+ ?>
     
 </body>
 </html>
