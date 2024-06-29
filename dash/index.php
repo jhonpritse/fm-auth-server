@@ -35,7 +35,7 @@ if (mysqli_num_rows($result_login) > 0) {
     <?php session_destroy(); ?>
     <button type="submit">Logout</button>
 </form>
-<form action="/dash/add.php" method="post">
+<form action="/dash/add.php">
     <button type="submit">Add</button>
 </form>
  
