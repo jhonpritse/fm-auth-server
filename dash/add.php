@@ -132,8 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
         });
     }
     document.getElementById('download').addEventListener('click', function() {
-        var img = document.getElementById('qrcode').getElementsByTagName('img')[0];
-        var a = document.createElement('a');
+        let img = document.getElementById('qrcode').getElementsByTagName('img')[0];
+        let a = document.createElement('a');
         a.href = img.src;
         a.download = 'qrcode.png';
         a.click();
