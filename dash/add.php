@@ -28,10 +28,10 @@ $conn = CONN;
     <br>
 
     <label for="is_verified">Is Verified:</label><br>
-    <input type="text" id="is_verified" name="is_verified"><br>
+    <input type="number" id="is_verified" name="is_verified"><br>
 
     <label for="used_amount">Used Amount:</label><br>
-    <input type="text" id="used_amount" name="used_amount"><br>
+    <input type="number" id="used_amount" name="used_amount"><br>
 
     <label for="c_name">Customer Name:</label><br>
     <input type="text" id="c_name" name="c_name"><br>
@@ -52,13 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
     $note = mysqli_real_escape_string($conn, $_POST['note']);
 
-    $query = "INSERT INTO `pocketportal-db`.codes (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note) VALUES ('$item_id', '$code', '$stream_url', '$item_name', '$is_verified', '$used_amount', '$c_name', '$note')";
-    $result = mysqli_query($conn, $query);
-    if ($result) {
-        echo "Item added successfully";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+//    $query = "INSERT INTO `pocketportal-db`.codes (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note) VALUES ('$item_id', '$code', '$stream_url', '$item_name', '$is_verified', '$used_amount', '$c_name', '$note')";
+//    $result = mysqli_query($conn, $query);
+//    if ($result) {
+//        echo "Item added successfully";
+//    } else {
+//        echo "Error: " . mysqli_error($conn);
+//    }
 }
 
 ?>
