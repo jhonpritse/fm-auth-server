@@ -1,4 +1,5 @@
 ﻿<?php
+session_start();
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 ?>
@@ -32,6 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['password'])) {
             echo "Login successful";
+            $_SESSION['user'] = $user['user'];
+            $_SESSION['password'] = $password;
             header("Location: /dash");
             exit;
         } else {
