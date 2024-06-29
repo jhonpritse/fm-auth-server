@@ -1,4 +1,5 @@
-﻿<?php /** @noinspection PhpUnreachableStatementInspection */
+﻿<?php /** @noinspection HtmlDeprecatedAttribute */
+/** @noinspection PhpUnreachableStatementInspection */
 session_start();
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
@@ -32,13 +33,15 @@ if (mysqli_num_rows($result_login) > 0) {
 
 <form action="/login" method="post">
     <button type="submit">Logout</button>
+</form>
+<form action="/dash/add.php" method="post">
+    <button type="submit">Add</button>
+</form>
     <?php
-
     // Execute a SQL query to fetch the data
     $query = "SELECT item_id, item_name, code, stream_url, is_verified, used_amount, c_name,note FROM `pocketportal-db`.codes";
     $result = mysqli_query($conn, $query);
-
-
+    
     // Check if the query was successful
     if ($result) {
         // Start the HTML table
