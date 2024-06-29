@@ -9,7 +9,7 @@ $conn = CONN;
 </head>
 <body>
     <h1>Add Item</h1>
-    <form method="post" action="">
+    <form>
         <label for="item_id">Item ID:</label><br>
         <input type="text" id="item_id" name="item_id" required><br>
     
@@ -47,7 +47,7 @@ $conn = CONN;
 </html>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add']) && isset($_POST['item_id']) && isset($_POST['code']) && isset($_POST['stream_url']) && isset($_POST['item_name'])) 
+if (isset($_POST['add']) && isset($_POST['item_id']) && isset($_POST['code']) && isset($_POST['stream_url']) && isset($_POST['item_name'])) 
 {
     $item_id = mysqli_real_escape_string($conn, $_POST['item_id']);
     $code = mysqli_real_escape_string($conn, $_POST['code']);
@@ -73,8 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add']) && isset($_POST
     }else{
         $note = mysqli_real_escape_string($conn, $_POST['note']);
     }
+    
     $used_amount = (int)$used_amount;
     $is_verified = (int)$is_verified;
+    
     // Prepare an SQL statement
     $stmt = $conn->prepare("INSERT INTO `pocketportal-db`.codes 
     (item_id, item_name, code, stream_url, is_verified, used_amount, c_name, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
