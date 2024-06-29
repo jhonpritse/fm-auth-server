@@ -51,7 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $used_amount = mysqli_real_escape_string($conn, $_POST['used_amount']);
     $c_name = mysqli_real_escape_string($conn, $_POST['c_name']);
     $note = mysqli_real_escape_string($conn, $_POST['note']);
-
+echo "Item added successfully";
+echo $item_id, $code, $stream_url, $item_name, $is_verified, $used_amount, $c_name, $note;
 //    $query = "INSERT INTO `pocketportal-db`.codes (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note) VALUES ('$item_id', '$code', '$stream_url', '$item_name', '$is_verified', '$used_amount', '$c_name', '$note')";
 //    $result = mysqli_query($conn, $query);
 //    if ($result) {
