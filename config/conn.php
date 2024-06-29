@@ -1,4 +1,4 @@
-﻿<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+﻿
 <?php
 
 require __DIR__ . '/config.php';

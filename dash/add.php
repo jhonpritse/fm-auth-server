@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
 }
 ?>
 
-<script >
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js" >
     function generateQRCode(url) {
         let qrcode = new QRCode(document.getElementById("qrcode"), {
             text: url,
@@ -139,4 +139,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['back'])) {
         a.click();
     });
 </script>
+
 
