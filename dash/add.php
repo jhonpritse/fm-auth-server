@@ -28,10 +28,10 @@ $conn = CONN;
     <br>
 
     <label for="is_verified">Is Verified:</label><br>
-    <input type="number" id="is_verified" name="is_verified"><br>
+    <input type="number" id="is_verified" name="is_verified" step="1"><br>
 
     <label for="used_amount">Used Amount:</label><br>
-    <input type="number" id="used_amount" name="used_amount"><br>
+    <input type="number" id="used_amount" name="used_amount" step="1"><br>
 
     <label for="c_name">Customer Name:</label><br>
     <input type="text" id="c_name" name="c_name"><br>
@@ -53,8 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $note = mysqli_real_escape_string($conn, $_POST['note']);
 echo "Item added successfully";
 echo $item_id, $code, $stream_url, $item_name, $is_verified, $used_amount, $c_name, $note;
-//    $query = "INSERT INTO `pocketportal-db`.codes (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note) VALUES ('$item_id', '$code', '$stream_url', '$item_name', '$is_verified', '$used_amount', '$c_name', '$note')";
-//    $result = mysqli_query($conn, $query);
+    $query = "INSERT INTO `pocketportal-db`.codes (item_id, code, stream_url, item_name, is_verified, used_amount, c_name, note) VALUES ('$item_id', '$code', '$stream_url', '$item_name', '$is_verified', '$used_amount', '$c_name', '$note')";
+    $result = mysqli_query($conn, $query);
+    echo $result;
 //    if ($result) {
 //        echo "Item added successfully";
 //    } else {
@@ -63,5 +64,6 @@ echo $item_id, $code, $stream_url, $item_name, $is_verified, $used_amount, $c_na
 }
 
 ?>
+end++++
 </body>
 </html>
