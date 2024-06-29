@@ -1,4 +1,5 @@
 ﻿<?php
+session_start();
 require __DIR__ . '/../config/conn.php';
 $conn = CONN;
 
@@ -11,11 +12,13 @@ if (mysqli_num_rows($result) > 0) {
     if (password_verify($password, $user['password'])) {
         echo "Login successful";
     } else {
+        echo "Invalid credentials";
         header("Location: /login");
     }
 } else {
+    echo "Invalid username";
     header("Location: /login");
-}
+} 
 exit;
 ?>
 
